@@ -1,0 +1,276 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Corbel", Arial, sans-serif;
+  overflow-x: hidden;
+/* Pas de overflow-y: hidden ! */
+}
+
+.video-header {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh; /* Pour que le fond couvre toute la page, mais pas de height fixe */
+  overflow: visible; /* Permet le scroll si besoin */
+}
+
+.backVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 3vw 0 0 3vw;
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  width: 8vw;
+  height: auto;
+  margin-right: 3vw;
+}
+
+.navigation-panel {
+  background: #f3e8ff;
+  border-radius: 5vw;
+  box-shadow: 0 0.5vw 2vw rgba(0, 0, 0, 0.08);
+  padding: 1.2vw 3vw;
+  display: flex;
+  align-items: center;
+  width: 45vw;
+  margin-right: 4vw;
+  overflow-x: auto;            /* Permet le scroll horizontal du panel si besoin */
+  min-width: 0;                /* Permet au flex de rétrécir */
+}
+
+.navigation-panel ul {
+  display: flex;
+  gap: 2vw;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;           /* Empêche le retour à la ligne */
+  overflow-x: auto;            /* Ajoute un scroll horizontal si besoin */
+  scrollbar-width: thin;       /* Scrollbar fine sur Firefox */
+}
+
+.navigation-panel li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3vw;
+  padding: 0.7vw 1.5vw;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.navigation-panel li.active,
+.navigation-panel li:hover {
+  background: #d8b4ff;
+  transform: scale(1.05);
+}
+
+.navigation-panel a {
+  text-decoration: none;
+  color: #222;
+  font-family: "Corbel", Arial, sans-serif;
+  font-size: 1.1vw;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navigation-panel .icon {
+  width: 2.5vw;
+  height: 2.5vw;
+  margin-bottom: 0.5vw;
+}
+
+.navigation-panel .text {
+  font-size: 1vw;
+  font-weight: 500;
+  margin-top: 0.3vw;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  margin-left: auto;
+  margin-right: 2vw;
+}
+
+.btn {
+  border: none;
+  border-radius: 2vw;
+  padding: 0.7vw 2vw;
+  font-size: 1vw;
+  font-family: "Corbel", Arial, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 0.5vw;
+  transition: background 0.2s;
+}
+
+.btn-login {
+  background: #6c63ff;
+  color: #fff;
+}
+
+.btn-signup {
+  background: #ede9fe;
+  color: #444;
+}
+
+.btn-login:hover,
+.btn-signup:hover {
+  background: #b39ddb;
+  color: #222;
+}
+
+.profile-icon {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  background: #ede9fe;
+  padding: 0.7vw;
+  margin-left: 1vw;
+}
+
+.profile-link {
+  display: inline-block;
+}
+.profile-link:focus {
+  outline: none;
+}
+
+.header-content {
+  position: static;
+  width: 60vw;
+  margin: 6vw auto 0 auto;
+  text-align: center;
+  color: #111;
+  z-index: 2;
+}
+
+.header-content h2 {
+  font-size: 2vw;
+  font-weight: 400;
+  margin-bottom: 1vw;
+  color: #222;
+}
+
+.header-content h1 {
+  font-size: 3vw;
+  font-weight: bold;
+  margin: 1vw 0 2vw 0;
+  color: #111;
+}
+
+.header-content p {
+  font-size: 1.3vw;
+  font-weight: 400;
+  margin-bottom: 3vw;
+  color: #222;
+}
+
+.main-btn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 1vw;
+  padding: 1.2vw 3vw;
+  font-size: 1.2vw;
+  font-family: "Corbel", Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.main-btn:hover {
+  background: #6c63ff;
+}
+
+/* Responsive for small screens */
+@media (max-width: 700px) {
+  .header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2vh 0 0 2vw;
+  }
+  .logo {
+    width: 18vw;
+    margin-bottom: 2vh;
+  }
+  .navigation-panel {
+    width: 90vw;
+    min-width: 0;
+    margin: 2vh 0;
+    padding: 1vh 2vw;
+  }
+  .navigation-panel ul {
+    gap: 4vw;
+  }
+  .header-actions {
+    margin: 2vh 0 0 0;
+  }
+  .header-content {
+    width: 90vw;
+    top: 28vh;
+  }
+  .header-content h2,
+  .header-content h1,
+  .header-content p,
+  .main-btn {
+    font-size: 4vw;
+  }
+}
+
+.footer {
+  width: 100vw;
+  background: #111;
+  color: #fff;
+  padding: 1.2vw 0;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  font-size: 1vw;
+  text-align: center;
+  z-index: 10;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5vw;
+  width: 100%;
+}
+
+.footer-logo {
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.footer-separator {
+  color: #888;
+  font-size: 1.2vw;
+}
+
+.footer-team {
+  font-style: italic;
+}
+
+.footer-contact {
+  text-decoration: underline;
+  cursor: pointer;
+}
